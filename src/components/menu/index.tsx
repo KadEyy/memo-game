@@ -3,15 +3,17 @@ import LogoMenu from '@assets/logoMenu.svg';
 import {MenuCore, Button} from './menuStyle';
 
 interface Props{
+    rulesOpen: boolean;
     gameReset(): void;
+    toggleMenu(): void;
 }
 
-const Menu: FC<Props> = ({gameReset}) => {
+const Menu: FC<Props> = ({rulesOpen, gameReset, toggleMenu}) => {
     return(
         <MenuCore>
-            <Button onClick={gameReset}>Reset</Button>
+            <Button onClick={gameReset}>Restart gry</Button>
             <img src={LogoMenu}/>
-            <Button>Zasady</Button>
+            <Button onClick={toggleMenu}>{rulesOpen ? 'Zamknij zasady' : 'Otwórz zasady'}</Button>
         </MenuCore>
     )
 }

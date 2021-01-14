@@ -4,25 +4,6 @@ interface Props{
     finished: boolean;
 }
 
-const animationOpen = keyframes`
-    0%{
-        width: 0;
-        height: 0;
-    }
-    25%{
-        width: 5%;
-        height: 0;
-    }
-    50%{
-        width: 5%;
-        height: 100%;
-    }
-    100%{
-        width: 100%;
-        height: 100%;
-    }
-`;
-
 export const FinishScreenCore = styled.div<Props>`
     position: absolute;
     background: #d23be7;
@@ -51,6 +32,7 @@ export const FinishScreenText = styled.p`
 `;
 
 export const Button = styled.div`
+    user-select: none;
     cursor: pointer;
     padding: 6px 5px;
     font-size: 1.5em;

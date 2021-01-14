@@ -14,6 +14,7 @@ export const MenuCore = styled.div`
 `;
 
 export const Button = styled.div`
+    user-select: none;
     cursor: pointer;
     padding: 6px 5px;
     font-size: 1.3em;

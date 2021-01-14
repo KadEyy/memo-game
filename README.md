@@ -1,3 +1,3 @@
 # react-ts-template
 
-You can simply clone it and execute ```npm install``` and make edit package.json properties like author, version, description etc.
+Simple image memory game created with React and styled-components mainly.

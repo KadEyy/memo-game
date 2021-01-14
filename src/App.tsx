@@ -7,10 +7,10 @@ import Footer from '@components/footer';
 import SubTitle from '@components/subTitle';
 import Menu from '@components/menu';
 import FinishScreen from '@components/finsihScreen';
+import Rules from '@components/rules';
 import {useGameController} from './game';
 import theme from './theme';
 import tiles from './tiles';
-import FinsishScreen from '@components/finsihScreen';
 
 const TileContainer = styled.div`
     display: flex;
@@ -19,27 +19,30 @@ const TileContainer = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     margin: 0 auto;
+    position: relative;
 `;
 
 const App: React.FC = () => {
 
     const [randomizedTiles, randomizedColors, total, finished, flip, reset] = useGameController(tiles, theme.colors.tiles);
+    const [rulesOpen, setRulesOpen] = useState<boolean>(false);
 
-    const gameReset = () => {
-        reset();
+    const toggleMenu = () => {
+        setRulesOpen(!rulesOpen);
     }
 
     return(
         <ThemeProvider theme={theme}>
             <MainContainer>
-                <FinsishScreen finished={finished} gameReset={gameReset} total={total}/>
+                <FinishScreen finished={finished} gameReset={reset} total={total}/>
                 <AppContent>
                     <Title>Memo-game</Title>
                     <SubTitle count={total}/>
                     <TileContainer>
+                        <Rules open={rulesOpen} toggleMenu={toggleMenu}/>
                         {randomizedTiles.map((tile, i) => <Tile background={randomizedColors[i]} onClick={flip} key={i} id={i} name={tile.name} image={tile.image} checked={tile.checked} flipped={tile.flipped}/>)}
                     </TileContainer>
-                    <Menu gameReset={gameReset}/>
+                    <Menu rulesOpen={rulesOpen} gameReset={reset} toggleMenu={toggleMenu}/>
                 </AppContent>
                 <Footer/>
             </MainContainer>
